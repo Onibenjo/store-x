@@ -38,11 +38,11 @@ const App = () => {
   }, []);
 
   return loading ? (
-    <div style={{width: '90vw', height: '80vh'}}>
+    <div style={{ width: "90vw", height: "80vh" }}>
       <img
         src="./spinner.gif"
         alt="Loading..."
-        style={{ margin: "3rem auto", display:'block' }}
+        style={{ margin: "3rem auto", display: "block" }}
       />
     </div>
   ) : (
