@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
+import CartIcon from "./../cart-icon/cart-icon.component";
+import CardDropdown from './../cart-dropdown/cart-dropdown.component';
 
 const Header = () => {
   const { currentUser } = useSelector(state => ({ ...state.user }));
@@ -29,7 +31,9 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+        <CardDropdown/>
     </div>
   );
 };
