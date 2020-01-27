@@ -5,10 +5,13 @@ import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 import CartIcon from "./../cart-icon/cart-icon.component";
-import CardDropdown from './../cart-dropdown/cart-dropdown.component';
+import CardDropdown from "./../cart-dropdown/cart-dropdown.component";
 
 const Header = () => {
-  const { currentUser } = useSelector(state => ({ ...state.user }));
+  const { currentUser, hidden } = useSelector(state => ({
+    ...state.user,
+    ...state.cart
+  }));
   console.log(currentUser);
   return (
     <div className="header">
@@ -33,7 +36,7 @@ const Header = () => {
         )}
         <CartIcon />
       </div>
-        <CardDropdown/>
+      {hidden ? null : <CardDropdown />}
     </div>
   );
 };
