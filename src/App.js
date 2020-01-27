@@ -62,7 +62,7 @@ class App extends React.Component {
 
 const NotFound  = () => (
   <div style={{
-    height: '100vh',
+    minHeight: '80vh',
     width: '100vw',
     display: 'flex',
     justifyContent: 'center',
