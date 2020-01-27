@@ -10,6 +10,7 @@ import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from "./components/header/header.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+import CheckoutPage from "./pages/checkout/checkout.component";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,8 @@ const App = () => {
       <Router>
         <HomePage path="/" />
         <ShopPage path="/shop" />
-        <SignInAndSignUpPage path="/signin" />
+          <SignInAndSignUpPage path="/signin" />
+          <CheckoutPage path='/checkout' />
         <NotFound default />
       </Router>
     </div>
