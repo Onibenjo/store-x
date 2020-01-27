@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Router } from '@reach/router';
 
 import './App.css';
@@ -71,5 +72,4 @@ const NotFound  = () => (
     Not found
   </div>
 );
-
 export default App;
