@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./checkout-item.styles.scss";
 import { useDispatch } from "react-redux";
 import {
@@ -10,6 +10,16 @@ import {
 const CheckoutItem = ({ cartItem }) => {
   const dispatch = useDispatch();
   const { name, quantity, price, imageUrl } = cartItem;
+
+   const decrementCounter = useCallback(
+    () => dispatch(removeItem(cartItem)),
+    [cartItem, dispatch]
+  );
+   const incrementCounter = useCallback(
+    () => dispatch(addItem(cartItem)),
+    [cartItem, dispatch]
+  );
+
   return (
     <div className="checkout-item">
       <div className="image-container">
@@ -17,11 +27,11 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
       <span className="name">{name}</span>
       <span className="quantity">
-        <div className="arrow" onClick={() => dispatch(removeItem(cartItem))}>
+        <div className="arrow" onClick={decrementCounter}>
           &#10094;
         </div>
         <span className="value">{quantity}</span>
-        <div className="arrow" onClick={() => dispatch(addItem(cartItem))}>
+        <div className="arrow" onClick={incrementCounter}>
           &#10095;
         </div>
       </span>
