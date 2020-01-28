@@ -1,25 +1,27 @@
 .header {
-  height: 70px;
+  // height: 70px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  justify-content: space-around;
+  padding: 1rem 0;
+  flex-wrap: wrap;
 
   .logo-container {
     height: 100%;
-    width: 70px;
-    padding: 25px;
+    padding: 1rem;
   }
 
   .options {
-    width: 50%;
+    // width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
+    flex-grow: 1;
     justify-content: flex-end;
+    flex-wrap: wrap;
 
     .option {
-      padding: 10px 15px;
+      padding: 0.8rem 1rem;
       cursor: pointer;
     }
   }
