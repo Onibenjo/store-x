@@ -8,7 +8,7 @@ import { selectDirectorySections } from "../../redux/directory/directory.selecto
 import { createStructuredSelector } from "reselect";
 
 const Directory = () => {
-  const sections = useSelector(
+  const {sections} = useSelector(
     createStructuredSelector({ sections: selectDirectorySections })
   );
 
