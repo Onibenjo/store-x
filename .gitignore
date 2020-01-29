@@ -5,12 +5,12 @@
 /.pnp
 .pnp.js
 
-/firebase
+# /firebase
 
 # testing
 /coverage
 
-/firebase
+# /firebase
 
 /.yarn
 
