@@ -1,12 +1,16 @@
 import React from "react";
 
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
+import CollectionPage from "../collection/collection.component";
+import { Router } from "@reach/router";
 
-const ShopPage = (props) => {
-  console.log(props)
+const ShopPage = () => {
   return (
     <div className="shop-page">
-      <CollectionsOverview />
+      <Router>
+        <CollectionsOverview path="/" />
+        <CollectionPage path=":collectionId" />
+      </Router>
     </div>
   );
 };

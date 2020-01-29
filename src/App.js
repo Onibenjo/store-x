@@ -51,9 +51,9 @@ const App = () => {
       <Header />
       <Router>
         <HomePage path="/" />
-        <ShopPage path="/shop" />
-          <SignInAndSignUpPage path="/signin" />
-          <CheckoutPage path='/checkout' />
+        <ShopPage path="shop/*" />
+        <SignInAndSignUpPage path="signin" />
+        <CheckoutPage path="checkout" />
         <NotFound default />
       </Router>
     </div>

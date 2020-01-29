@@ -1,11 +1,11 @@
+.title {
+  font-size: 2rem;
+  margin: 0 auto 1.7rem;
+}
 .collection-page {
-  display: flex;
-  flex-direction: column;
-
-  .title {
-    font-size: 38px;
-    margin: 0 auto 30px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-gap: 1rem;
 
   .items {
     display: grid;
