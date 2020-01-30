@@ -3,11 +3,11 @@ import "./collections-overview.styles.scss";
 import CollectionPreview from "../collection-preview/collection-preview.component";
 import { useSelector } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCollections } from "../../redux/shop/shop.selectors";
+import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
 const CollectionsOverview = () => {
   const { collections } = useSelector(
-    createStructuredSelector({ collections: selectCollections })
+    createStructuredSelector({ collections: selectCollectionsForPreview })
   );
   return (
     <div className="collections-overview">
