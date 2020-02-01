@@ -15,7 +15,7 @@ export const LogoContainer = styled(Link)`
 
 `;
 
-export const OptionsContainer = stled.div`
+export const OptionsContainer = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
