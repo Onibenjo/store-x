@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import { useSelector } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -40,7 +39,7 @@ const Header = () => {
         ) : (
           <OptionLink to="/signin">
             SIGN IN
-          <OptionLink>
+          </OptionLink>
         )}
         <CartIcon />
       </OptionsContainer>
