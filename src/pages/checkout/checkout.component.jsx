@@ -30,17 +30,15 @@ const CheckoutPage = () => {
           <span>Remove</span>
         </div>
       </div>
-
-          {cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)}
-          
-          <div className="total">
-              <span>TOTAL: N{total}</span>
+      {cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)}
+      <div className="total">
+          <span>TOTAL: N{total}</span>
       </div>
       <div className="text-warning">
         *Please use <br/>
         4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
       </div>
-          <StripeCheckoutButton price={total} />
+      <StripeCheckoutButton price={total} />
     </div>
   );
 };

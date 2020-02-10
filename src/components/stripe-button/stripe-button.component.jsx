@@ -4,10 +4,10 @@ import StripeCheckout from "react-stripe-checkout";
 const StripeCheckoutButton = ({ price }) => {
   const priceForSale = price * 100;
   const publishableKey = process.env.REACT_APP_STRIPE_KEY;
-  console.log(publishableKey);
 
-  const onToken = token => {
+  const onToken = (token, others) => {
     console.log(token);
+    console.log(others);
   };
 
   return (
@@ -21,7 +21,9 @@ const StripeCheckoutButton = ({ price }) => {
       billingAddress
       shippingAddress
       image="https://svgshare.com/i/CUz.svg"
-      panelLabel="Pay Now"
+      locale='auto'
+      panelLabel={`Pay Now for ${price}`}
+      zipCode
       token={onToken}
     />
   );
