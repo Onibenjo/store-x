@@ -1,39 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Router } from "@reach/router";
-import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
-import CollectionPage from "../collection/collection.component";
-import {
-  firestore,
-  convertCollectionsSnapshotToMap
-} from "../../firebase/firebase.utils";
+import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
+import { fetchCollectionsStart } from "./../../redux/shop/shop.actions";
 import { useDispatch } from "react-redux";
-import { updateCollections } from './../../redux/shop/shop.actions';
-import WithSpinner from './../../components/with-spinner/with-spinner.component';
-
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+import CollectionsPageContainer from "./../collection/collection.container";
 
 const ShopPage = () => {
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-  
   useEffect(() => {
-    const collectionRef = firestore.collection("collections");
-
-    const unsubscribeFromSnapshot = collectionRef.onSnapshot(snapshot => {
-      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      dispatch(updateCollections(collectionsMap));
-      setLoading(false);
-    });
-
-    return () => unsubscribeFromSnapshot();
+    //dispatches the async fetching of collections
+    // dispatch(fetchCollectionsStartAsync()); //redux thunk
+    dispatch(fetchCollectionsStart());
   }, [dispatch]);
 
-  return ( 
+  return (
     <div className="shop-page">
       <Router>
-        <CollectionsOverviewWithSpinner isLoading={loading} path="/" />
-        <CollectionPageWithSpinner isLoading={loading} path=":collectionId" />
+        <CollectionsOverviewContainer path="/" />
+        <CollectionsPageContainer path=":collectionId" />
       </Router>
     </div>
   );

@@ -13,6 +13,7 @@ import {
   createUserProfileDocument
 } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+import {SpinnerOverlay, SpinnerContainer} from './components/with-spinner/with-spinner.styles';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      try{
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot => {
@@ -33,20 +35,25 @@ const App = () => {
         // return;
       }
       dispatch(setCurrentUser(userAuth));
-     
+    }catch(e){
+        console.log(e);
+    }
     });
     return () => unsubscribeFromAuth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return loading ? (
-    <div style={{ width: "90vw", height: "80vh" }}>
-      <img
-        src="./spinner.gif"
-        alt="Loading..."
-        style={{ margin: "3rem auto", display: "block" }}
-      />
-    </div>
+    // <div style={{ width: "90vw", height: "80vh" }}>
+    //   <img
+    //     src="./spinner.gif"
+    //     alt="Loading..."
+    //     style={{ margin: "3rem auto", display: "block" }}
+    //   />
+    // </div>
+    <SpinnerOverlay>
+      <SpinnerContainer />
+    </SpinnerOverlay>
   ) : (
     <div>
       <Header />
