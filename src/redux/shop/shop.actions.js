@@ -19,6 +19,7 @@ export const fetchCollectionsFailure = errorMessage => ({
 });
 
 export const fetchCollectionsStartAsync = () => {
+  console.log("fcsa atarted");
   return dispatch => {
     const collectionRef = firestore.collection("collections");
     dispatch(fetchCollectionsStart());
@@ -26,6 +27,7 @@ export const fetchCollectionsStartAsync = () => {
     collectionRef
       .get()
       .then(snapshot => {
+        console.log(snapshot);
         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
         dispatch(fetchCollectionsSuccess(collectionsMap));
       })

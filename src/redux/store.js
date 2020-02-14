@@ -3,8 +3,7 @@ import { persistStore } from "redux-persist";
 import rootReducer from "./root-reducer";
 import createSagaMiddleware from "redux-saga";
 // import thunk from "redux-thunk";
-
-import { fetchCollectionsStart } from "./shop/shop.saga";
+import rootSaga from "./root-saga";
 
 // const middlewares = [thunk];
 const sagaMiddleware = createSagaMiddleware();
@@ -18,7 +17,7 @@ const store = createStore(
   )
 );
 
-sagaMiddleware.run(fetchCollectionsStart);
+sagaMiddleware.run(rootSaga);
 
 const persistor = persistStore(store);
 

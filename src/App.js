@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Router } from "@reach/router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
@@ -8,38 +9,38 @@ import ShopPage from "./pages/shop/shop.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import Header from "./components/header/header.component";
+// import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+// import { setCurrentUser } from "./redux/user/user.actions";
 import {
-  auth,
-  createUserProfileDocument
-} from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.actions";
-import {SpinnerOverlay, SpinnerContainer} from './components/with-spinner/with-spinner.styles';
+  SpinnerOverlay,
+  SpinnerContainer
+} from "./components/with-spinner/with-spinner.styles";
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const loading = useSelector(state => state.user.loading);
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      try{
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          dispatch(
-            setCurrentUser({
-              id: snapShot.id,
-              ...snapShot.data()
-            })
-          );
-        });
-        // return;
-      }
-      dispatch(setCurrentUser(userAuth));
-    }catch(e){
-        console.log(e);
-    }
-    });
-    return () => unsubscribeFromAuth();
+    // const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   try{
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.onSnapshot(snapShot => {
+    //       dispatch(
+    //         setCurrentUser({
+    //           id: snapShot.id,
+    //           ...snapShot.data()
+    //         })
+    //       );
+    //     });
+    //     // return;
+    //   }
+    //   dispatch(setCurrentUser(userAuth));
+    // }catch(e){
+    //     console.log(e);
+    // }
+    // });
+    // return () => unsubscribeFromAuth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
