@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Router } from "@reach/router";
-import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
@@ -15,9 +14,10 @@ import {
   SpinnerOverlay,
   SpinnerContainer
 } from "./components/with-spinner/with-spinner.styles";
+import { checkUserSession } from "./redux/user/user.actions";
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const loading = useSelector(state => state.user.loading);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
     //     });
     //     // return;
     //   }
-    //   dispatch(setCurrentUser(userAuth));
+    dispatch(checkUserSession());
     // }catch(e){
     //     console.log(e);
     // }

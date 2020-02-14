@@ -16,15 +16,16 @@ const SignIn = () => {
     email: "",
     password: ""
   });
+
   const handleSubmit = e => {
     e.preventDefault();
-    try {
-      const { email, password } = state;
-      // await auth.signInWithEmailAndPassword(email, password);
-      dispatch(emailSignInStart(email, password));
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    const { email, password } = state;
+    // await auth.signInWithEmailAndPassword(email, password);
+    dispatch(emailSignInStart({ email, password }));
+    // } catch (error) {
+    //   console.log(error);
+    // }
     setState({ email: "", password: "" });
   };
 
