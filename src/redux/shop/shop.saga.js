@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeEvery, call, put, all } from "redux-saga/effects";
 
 import { ShopActionTypes } from "./shop.reducer";
 import {
@@ -10,6 +10,7 @@ import {
   fetchCollectionsFailure
 } from "./shop.actions";
 
+// async fetching of collections from firestore
 export function* fetchCollectionsAsync() {
   try {
     const collectionRef = firestore.collection("collections");
@@ -25,10 +26,14 @@ export function* fetchCollectionsAsync() {
     yield put(fetchCollectionsFailure(err.message));
   }
 }
-
+// fetchcollections
 export function* fetchCollectionsStart() {
   yield takeEvery(
     ShopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionsAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionsStart)]);
 }
